@@ -14,7 +14,7 @@ from app.routers import books_read, books_write
 
 DEFAULT_CORS_ORIGINS = (
     "http://localhost:3000,http://localhost:5500,http://127.0.0.1:5500,"
-    "http://127.0.0.1:8000,http://[::1]:5500,http://[::]:5500"
+    "http://127.0.0.1:8000,http://[::1]:5500,http://[::]:5500,https://reading-list-tracker.vercel.app/"
 )
 
 app = FastAPI(title="Reading List Tracker")
