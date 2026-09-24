@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reading List Tracker</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="page-header">
+        <p class="eyebrow">Your personal library</p>
+        <h1>Reading List Tracker</h1>
+        <p>Add books, follow your progress, and keep your next read in sight.</p>
+      </header>
+
+      <section class="panel" aria-labelledby="add-book-heading">
+        <h2 id="add-book-heading">Add a book</h2>
+        <form id="book-form" novalidate>
+          <div class="form-field">
+            <label for="title">Title</label>
+            <input id="title" name="title" type="text" autocomplete="off" />
+          </div>
+
+          <div class="form-field">
+            <label for="author">Author</label>
+            <input id="author" name="author" type="text" autocomplete="off" />
+          </div>
+
+          <div class="form-field">
+            <label for="status">Status</label>
+            <select id="status" name="status">
+              <option value="to-read">To read</option>
+              <option value="reading">Reading</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+
+          <button type="submit">Add book</button>
+        </form>
+        <p id="message" class="message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="stats" aria-label="Books by status">
+        <div class="stat-card">
+          <span id="to-read-count" class="stat-value">0</span>
+          <span>To read</span>
+        </div>
+        <div class="stat-card">
+          <span id="reading-count" class="stat-value">0</span>
+          <span>Reading</span>
+        </div>
+        <div class="stat-card">
+          <span id="done-count" class="stat-value">0</span>
+          <span>Done</span>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="book-list-heading">
+        <div class="list-heading">
+          <h2 id="book-list-heading">Books</h2>
+          <div class="filter-field">
+            <label for="status-filter">Filter by status</label>
+            <select id="status-filter">
+              <option value="">All books</option>
+              <option value="to-read">To read</option>
+              <option value="reading">Reading</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+        </div>
+        <div id="book-list" class="book-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
