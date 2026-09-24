@@ -1,1 +1,1 @@
-export const API_BASE_URL = "https://reading-list-tracker.onrender.com/";
+export const API_BASE_URL = "https://reading-list-tracker.onrender.com";

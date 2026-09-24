@@ -12,18 +12,23 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app.routers import books_read, books_write
 
+VERCEL_ORIGIN = "https://reading-list-tracker.vercel.app"
+
 DEFAULT_CORS_ORIGINS = (
     "http://localhost:3000,http://localhost:5500,http://127.0.0.1:5500,"
-    "http://127.0.0.1:8000,http://[::1]:5500,http://[::]:5500,https://reading-list-tracker.vercel.app/"
+    "http://127.0.0.1:8000,http://[::1]:5500,http://[::]:5500,"
+    + VERCEL_ORIGIN
 )
 
 app = FastAPI(title="Reading List Tracker")
 
 origins = [
-    origin.strip()
+    origin.strip().rstrip("/")
     for origin in os.environ.get("CORS_ORIGINS", DEFAULT_CORS_ORIGINS).split(",")
     if origin.strip()
 ]
+if VERCEL_ORIGIN not in origins:
+    origins.append(VERCEL_ORIGIN)
 
 app.add_middleware(
     CORSMiddleware,
